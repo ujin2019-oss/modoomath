@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>모두매쓰 - AI로 만드는 맞춤 수학 학습</title>
+<meta name="description" content="학생·학부모·선생님을 위한 문제 생성부터 오답 분석까지, AI 수학 학습 모두매쓰">
+<!-- Pretendard 폰트 -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<!-- Swiper -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+<!-- 공통 CSS -->
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="main">
+
+<!-- 공통 헤더 (js/common.js에서 삽입) -->
+<header id="header"></header>
+
+<main>
+
+  <!-- ============ 히어로 (Swiper + 프로그레스바) ============ -->
+  <section class="hero">
+    <div class="swiper hero-swiper">
+      <div class="swiper-wrapper">
+
+        <div class="swiper-slide hero-slide">
+          <div class="hero-bg"></div>
+          <div class="container hero-content">
+            <span class="eyebrow">MODOO MATH</span>
+            <h1>AI로 만드는 <span class="point">맞춤 수학 학습</span></h1>
+            <p>학생·학부모·선생님을 위한 문제 생성부터 오답 분석까지</p>
+            <a href="#none" class="btn btn--primary">지금 시작하기</a>
+          </div>
+        </div>
+
+        <div class="swiper-slide hero-slide">
+          <div class="hero-bg"></div>
+          <div class="container hero-content">
+            <span class="eyebrow">WHY MODOO MATH</span>
+            <h1>틀린 문제에는<br>반드시 <span class="point">이유</span>가 있습니다</h1>
+            <p>틀린 이유를 정확히 이해하는 학습이 성적 향상의 핵심입니다</p>
+            <a href="#none" class="btn btn--primary">지금 시작하기</a>
+          </div>
+        </div>
+
+        <div class="swiper-slide hero-slide">
+          <div class="hero-bg"></div>
+          <div class="container hero-content">
+            <span class="eyebrow">START NOW</span>
+            <h1>AI 수학 학습,<br>이제 <span class="point">더 효율적으로</span></h1>
+            <p>1주일 무료 체험으로 모두매쓰를 경험해 보세요</p>
+            <a href="#none" class="btn btn--primary">1주일 무료 체험하기</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <!-- 진행 표시 프로그레스바 -->
+    <div class="hero-progress">
+      <span class="frac"><b class="cur">1</b> / <span class="total">3</span></span>
+      <div class="bar"><i></i></div>
+    </div>
+  </section>
+
+  <!-- ============ 기능 소개 (탭) ============ -->
+  <section class="section" id="feature">
+    <div class="container">
+      <div class="section-head" data-ani="fade-up">
+        <h2>모두매쓰에서<br><span class="point">최적화된 학습 시스템</span>을 경험해 보세요</h2>
+      </div>
+
+      <div class="feature-tabs" data-ani="fade-up">
+        <button class="is-active" data-tab="0">문제 생성</button>
+        <button data-tab="1">문제 출력</button>
+        <button data-tab="2">오답노트</button>
+      </div>
+
+      <div class="feature-panels" data-ani="fade-up">
+        <div class="feature-panel is-active">
+          <div class="feature-text">
+            <h3>내 수준에 맞는 수학 문제<br><span class="point">AI가 알아서 만들어줘요</span></h3>
+            <p>과목과 단원, 난이도를 선택하면<br>AI가 나에게 필요한 문제만 골라서 만들어드립니다.</p>
+          </div>
+          <div class="feature-visual">
+            <!-- 이미지 자동 로테이션: data-images에 쉼표로 경로 나열, data-interval로 전환 속도(ms) -->
+            <div class="img-box img-rotator"
+                 data-images="images/sec1_slide1_1.png, images/sec1_slide1_2.png, images/sec1_slide1_3.png, images/sec1_slide1_4.png"
+                 data-interval="1600"></div>
+          </div>
+        </div>
+        <div class="feature-panel">
+          <div class="feature-text">
+            <h3>필요한 문제만 골라<br><span class="point">깔끔한 문제지로 출력해요</span></h3>
+            <p>만든 문제를 시험지 형태로 정리해<br>클릭 몇 번으로 출력까지 끝낼 수 있습니다.</p>
+          </div>
+          <div class="feature-visual">
+            <div class="img-box img-rotator"
+                 data-images="images/sec1_slide2_1.png, images/sec1_slide2_2.png, images/sec1_slide2_3.png, images/sec1_slide2_4.png"
+                 data-interval="1600"></div>
+          </div>
+        </div>
+        <div class="feature-panel">
+          <div class="feature-text">
+            <h3>틀린 문제는 모아서<br><span class="point">AI 오답노트로 복습해요</span></h3>
+            <p>틀린 이유를 분석하고 비슷한 유형의 문제를<br>다시 만들어 완전 학습을 도와줍니다.</p>
+          </div>
+          <div class="feature-visual">
+            <div class="img-box img-rotator"
+                 data-images="images/sec1_slide3_1.png, images/sec1_slide3_2.png, images/sec1_slide3_3.png, images/sec1_slide3_4.png, images/sec1_slide3_5.png"
+                 data-interval="1600"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 모두매쓰를 찾는 이유 ============ -->
+  <section class="section section--soft" id="reason">
+    <div class="container">
+      <div class="section-head" data-ani="fade-up">
+        <h2>작은 공부방부터 대형 학원<br>선생님까지 <span class="point">모두매쓰</span>를 찾는 이유</h2>
+      </div>
+
+      <div class="reason-row" data-ani="row">
+        <div class="reason-visual" data-ani-child="visual">
+          <img src="images/sec2_1.png" alt="틀린 문제 분석 일러스트">
+        </div>
+        <div class="reason-text" data-ani-child="text">
+          <h3>틀린 문제에는<br>반드시 <span class="point">이유</span>가 있습니다</h3>
+          <p>단순히 문제만 많이 푸는 것이 아니라<br>틀린 이유를 정확히 이해 하는 것이<br>학생 수학 성적 향상의 핵심입니다.</p>
+        </div>
+      </div>
+
+      <div class="reason-row is-reverse" data-ani="row">
+        <div class="reason-visual" data-ani-child="visual">
+          <img src="images/sec2_2.png" alt="수준별 학습 일러스트">
+        </div>
+        <div class="reason-text" data-ani-child="text">
+          <h3><span class="point">학생마다 다른 수준</span><br>같은 문제로는 부족합니다</h3>
+          <p>모두에게 같은 문제를 제공하는 학습은<br>효율적인 결과를 만들기 어렵습니다.<br>각자의 수준에 맞는 학습이 성과를 만듭니다.</p>
+        </div>
+      </div>
+
+      <div class="reason-row" data-ani="row">
+        <div class="reason-visual" data-ani-child="visual">
+          <img src="images/sec2_3.png" alt="교재비 절감 일러스트">
+        </div>
+        <div class="reason-text" data-ani-child="text">
+          <h3>불필요한 교재비를 줄이고<br>더 <span class="point">효율적인 학습</span>이 가능합니다</h3>
+          <p>문제집을 계속 구매하지 않아도<br>필요한 문제를 직접 만들어 학습할 수 있습니다.<br>모두매쓰로 지속적인 학습 환경을 제공합니다.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 후기 ============ -->
+  <section class="section" id="review">
+    <div class="container">
+      <div class="section-head" data-ani="fade-up">
+        <h2>수많은 학생과 선생님이<br><span class="point">모두매쓰 학습 방식</span>으로 바꾸고 있습니다</h2>
+      </div>
+
+      <div class="review-list" data-ani="stagger">
+        <div class="review-card">
+          <span class="quote">“</span>
+          <h4>학습지 만들기가 너무 편해요.</h4>
+          <p>혼자 공부하면서 문제를 고르는 데 시간이 많이 걸렸는데, 이제는 단원만 고르면 제 수준에 맞는 문제지가 바로 만들어져요.</p>
+          <div class="who">
+            <img src="images/sec3_1.png" alt="">
+            <em>D중학교<br>진소은 학생</em>
+          </div>
+        </div>
+        <div class="review-card">
+          <span class="quote">“</span>
+          <h4>기출 문제 분석도 가능해요!</h4>
+          <p>기출 문제와 난이도 설정이 자세해서 수업 준비 시간이 크게 줄었습니다. 학생별 맞춤 문제지를 만들기도 쉬워요.</p>
+          <div class="who">
+            <img src="images/sec3_2.png" alt="">
+            <em>매스터디 수학학원<br>김경운 원장님</em>
+          </div>
+        </div>
+        <div class="review-card">
+          <span class="quote">“</span>
+          <h4>오답체크는 모두매쓰!</h4>
+          <p>학생들이 틀린 문제를 모아 비슷한 유형으로 다시 풀게 할 수 있어서 복습 효과가 확실히 좋아졌습니다.</p>
+          <div class="who">
+            <img src="images/sec3_3.png" alt="">
+            <em>A초등학교<br>유진선생님</em>
+          </div>
+        </div>
+        <div class="review-card">
+          <span class="quote">“</span>
+          <h4>클릭 몇 번으로 문제지가 완성돼요.</h4>
+          <p>아이 수준에 맞는 문제집을 고르기가 늘 어려웠는데, 필요한 문제만 출력해서 쓰니 교재비도 줄었어요.</p>
+          <div class="who">
+            <img src="images/sec3_4.png" alt="">
+            <em>B고등학교<br>정수빈 학생</em>
+          </div>
+        </div>
+        <div class="review-card">
+          <span class="quote">“</span>
+          <h4>AI 덕분에 빈틈없이 공부해요.</h4>
+          <p>오답 분석으로 제가 약한 단원을 알게 됐고, 그 부분만 집중해서 풀 수 있어서 성적이 눈에 띄게 올랐어요.</p>
+          <div class="who">
+            <img src="images/sec3_5.png" alt="">
+            <em>C학습지원센터<br>박효은선생님</em>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 요금제 ============ -->
+  <section class="section section--soft" id="pricing">
+    <div class="container">
+      <div class="section-head" data-ani="fade-up">
+        <h2>AI 수학 학습,<br>이제 <span class="point">더 효율적으로</span> 시작하세요</h2>
+      </div>
+      <div class="pricing-cta" data-ani="fade-up">
+        <a href="#none" class="btn btn--primary">1주일 무료 체험하기</a>
+      </div>
+
+      <div class="plan-list" data-ani="stagger">
+        <div class="plan-card">
+          <p class="plan-name">무료 플랜</p>
+          <div class="plan-price"><strong>0</strong><span>원/월</span></div>
+          <ul>
+            <li>하루 100문제 생성</li>
+            <li>기본 문제 유형 제공</li>
+            <li>문제 저장 가능</li>
+            <li class="no">AI 오답노트 미지원</li>
+            <li class="no">문제 출력 수 제한</li>
+          </ul>
+        </div>
+        <div class="plan-card plan-card--hot">
+          <span class="badge">추천</span>
+          <p class="plan-name">프리미엄 플랜</p>
+          <div class="plan-price"><strong>42,900</strong><span>원/월</span></div>
+          <ul>
+            <li>문제 생성 <b>무제한</b></li>
+            <li><b>모든 문제 유형</b> 제공</li>
+            <li>문제 저장 가능</li>
+            <li>AI 오답노트 <b>지원</b></li>
+            <li>문제 출력 <b>무제한</b></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- 공통 푸터 (js/common.js에서 삽입) -->
+<footer id="footer"></footer>
+
+<!-- Swiper / GSAP -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<!-- 공통 요소 + 메인 스크립트 -->
+<script src="js/common.js" data-root="./"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
