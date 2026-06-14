@@ -178,7 +178,24 @@
       });
     });
 
-    /* 동적 콘텐츠(헤더 등) 삽입 후 트리거 위치 재계산 */
-    window.addEventListener('load', function () { ScrollTrigger.refresh(); });
+    /* 뷰포트 안에 이미 들어와 있는 콘텐츠는 무조건 노출
+       (모바일 주소창 변화로 ScrollTrigger가 누락돼 빈 화면이 되는 현상 방지) */
+    function revealInView() {
+      var vh = window.innerHeight || document.documentElement.clientHeight;
+      gsap.utils.toArray('[data-ani]').forEach(function (el) {
+        if (el.getBoundingClientRect().top < vh * 0.98) {
+          gsap.set(el, { opacity: 1, y: 0, x: 0 });
+          /* stagger/row 등 자식이 따로 숨겨지는 경우까지 노출 */
+          if (el.children.length) gsap.set(el.children, { opacity: 1, y: 0, x: 0, scale: 1 });
+        }
+      });
+    }
+
+    /* 동적 콘텐츠(헤더 등) 삽입 후 트리거 위치 재계산 + 노출 보정 */
+    window.addEventListener('load', function () { ScrollTrigger.refresh(); revealInView(); });
+    window.addEventListener('resize', revealInView, { passive: true });
+    /* 폰트/이미지 로딩 지연 대비 최종 안전장치 */
+    setTimeout(function () { ScrollTrigger.refresh(); revealInView(); }, 1000);
+    revealInView();
   });
 })();

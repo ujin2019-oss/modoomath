@@ -206,7 +206,7 @@ button { font: inherit; border: 0; background: none; cursor: pointer; color: inh
 .header-util .util-login:hover { border-color: var(--color-main); }
 
 /* 모바일 메뉴 */
-.burger { display: none; width: 44px; height: 44px; position: relative; z-index: 1102; }
+.burger { display: none; width: 44px; height: 44px; position: relative; z-index: 1102; border-radius: 12px; }
 .burger i {
   position: absolute; left: 10px; width: 24px; height: 2px;
   background: var(--color-text); border-radius: 2px;
@@ -258,7 +258,7 @@ button { font: inherit; border: 0; background: none; cursor: pointer; color: inh
   position: absolute; inset: 0;
   background: url('../images/hero.png') center bottom / cover no-repeat;
 }
-.hero-content { position: relative; z-index: 2; padding-top: var(--header-h); }
+.hero-content { position: relative; z-index: 2; padding-top: var(--header-h); word-break: keep-all; overflow-wrap: break-word; }
 .hero-content .eyebrow {
   font-size: var(--fs-small);
   font-weight: var(--fw-semi);
@@ -276,13 +276,18 @@ button { font: inherit; border: 0; background: none; cursor: pointer; color: inh
 .hero-content p { margin-top: 20px; font-size: var(--fs-h4); color: var(--color-text-sub); }
 .hero-content .btn { margin-top: 40px; }
 
+/* 모바일 전용 줄바꿈 (데스크톱에서는 숨김) */
+.br-m { display: none; }
+
 /* 진행 프로그레스바 */
 .hero-progress {
   position: absolute; left: 50%; bottom: 48px; transform: translateX(-50%);
   z-index: 10;
+  width: max-content; max-width: calc(100% - 40px);
   display: flex; align-items: center; gap: 16px;
 }
 .hero-progress .bar {
+  flex: none;
   width: 220px; height: 4px;
   background: rgba(66, 99, 235, 0.15);
   border-radius: var(--radius-full);
@@ -293,7 +298,7 @@ button { font: inherit; border: 0; background: none; cursor: pointer; color: inh
   background: var(--color-main);
   border-radius: var(--radius-full);
 }
-.hero-progress .frac { font-size: var(--fs-small); color: var(--color-text-sub); font-variant-numeric: tabular-nums; }
+.hero-progress .frac { flex: none; white-space: nowrap; font-size: var(--fs-small); color: var(--color-text-sub); font-variant-numeric: tabular-nums; }
 .hero-progress .frac b { color: var(--color-text); }
 
 /* ==========================================================================
@@ -568,6 +573,7 @@ button { font: inherit; border: 0; background: none; cursor: pointer; color: inh
   padding: 60px var(--container-pad);
 }
 .auth-card {
+  position: relative;
   width: 100%;
   max-width: 560px;
   background: var(--color-white);
@@ -576,6 +582,17 @@ button { font: inherit; border: 0; background: none; cursor: pointer; color: inh
   padding: 64px 88px;
   text-align: center;
 }
+/* 뒤로가기 (모바일 전용) */
+.auth-back {
+  display: none;
+  position: absolute; top: 16px; left: 16px;
+  width: 40px; height: 40px;
+  align-items: center; justify-content: center;
+  border-radius: 10px;
+  color: var(--color-text);
+  transition: var(--transition);
+}
+.auth-back:hover { background: rgba(20, 30, 60, 0.06); }
 .auth-logo { display: inline-block; margin-bottom: 36px; }
 .auth-logo img { height: 32px; width: auto; }
 .auth-title {
@@ -639,7 +656,8 @@ button { font: inherit; border: 0; background: none; cursor: pointer; color: inh
 .auth-submit { width: 100%; margin-top: 32px; border-radius: var(--radius-sm); }
 
 @media (max-width: 768px) {
-  .auth-card { padding: 48px 24px; }
+  .auth-card { padding: 64px 24px 48px; }
+  .auth-back { display: flex; }
 }
 
 /* ==========================================================================
@@ -666,7 +684,16 @@ button { font: inherit; border: 0; background: none; cursor: pointer; color: inh
 
 @media (max-width: 1024px) {
   .gnb, .header-util { display: none; }
-  .burger { display: block; }
+  /* 상단 가장자리/노치에 붙지 않고 히어로 안쪽에 자리잡도록 헤더를 살짝 내림 */
+  #header { padding-top: calc(env(safe-area-inset-top, 0px) + 14px); }
+  .burger {
+    display: block;
+    background: rgba(255, 255, 255, 0.72);
+    backdrop-filter: blur(8px);
+    box-shadow: 0 2px 10px rgba(20, 30, 60, 0.12);
+  }
+  /* 메뉴 열렸을 땐 흰 패널 위라 배경 불필요 */
+  .burger.is-open { background: transparent; box-shadow: none; backdrop-filter: none; }
   .hero { height: 640px; }
   .feature-panel.is-active,
   .reason-row { grid-template-columns: 1fr; gap: 36px; }
@@ -674,6 +701,7 @@ button { font: inherit; border: 0; background: none; cursor: pointer; color: inh
 }
 
 @media (max-width: 768px) {
+  .br-m { display: inline; }
   :root {
     --fs-display: 34px;
     --fs-h1: 28px;
