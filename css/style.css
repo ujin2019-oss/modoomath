@@ -58,7 +58,7 @@
    Reset
    ========================================================================== */
 * { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; overflow-x: hidden; }
 body {
   font-family: 'Pretendard', 'Pretendard Variable', -apple-system, BlinkMacSystemFont,
     'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif;
@@ -409,6 +409,8 @@ button { font: inherit; border: 0; background: none; cursor: pointer; color: inh
 .review-card .who { display: flex; align-items: center; gap: 10px; margin-top: 22px; }
 .review-card .who img { width: 44px; height: 44px; border-radius: var(--radius-full); flex: none; object-fit: cover; }
 .review-card .who em { font-style: normal; font-size: var(--fs-small); font-weight: var(--fw-semi); }
+/* 마퀴용 복제 카드: 기본(그리드)에서는 숨김 → 태블릿 흐름 효과에서만 노출 */
+.review-card.is-clone { display: none; }
 
 /* 고객후기 서브페이지: 3열 + 넉넉한 카드 */
 .review-list--page { grid-template-columns: repeat(3, 1fr); gap: 28px; }
@@ -698,6 +700,8 @@ button { font: inherit; border: 0; background: none; cursor: pointer; color: inh
   .feature-panel.is-active,
   .reason-row { grid-template-columns: 1fr; gap: 36px; }
   .reason-row.is-reverse .reason-visual { order: 0; }
+  /* 1단으로 쌓이면 텍스트도 가운데 정렬 */
+  .reason-text { text-align: center; }
 }
 
 @media (max-width: 768px) {
@@ -715,6 +719,8 @@ button { font: inherit; border: 0; background: none; cursor: pointer; color: inh
     --header-h: 64px;
   }
   .hero { height: 560px; }
+  /* 모바일에서는 텍스트 좌측 정렬 유지 (가운데 정렬은 태블릿 구간만) */
+  .reason-text { text-align: left; }
   .hero-progress .bar { width: 140px; }
   .feature-tabs { flex-wrap: wrap; }
   .feature-tabs button { padding: 10px 22px; font-size: var(--fs-small); }
@@ -724,4 +730,39 @@ button { font: inherit; border: 0; background: none; cursor: pointer; color: inh
   .plan-card .plan-price strong { font-size: 38px; }
   .footer-inner { flex-direction: column; }
   .footer-side { align-items: flex-start; }
+}
+
+/* ==========================================================================
+   후기 카드 - 태블릿 전용 흐르는(마퀴) 효과 (769~1024px)
+   ※ PC/모바일은 기존 그리드 유지. 끊김 없는 무한 루프를 위해
+     원본 5장 + 복제 5장(.is-clone)을 가로로 흘리고 한 세트만큼 이동.
+   ========================================================================== */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .review-list {
+    display: flex;
+    flex-wrap: nowrap;
+    width: max-content;
+    gap: 20px;
+    animation: review-marquee 32s linear infinite;
+    will-change: transform;
+  }
+  .review-list:hover { animation-play-state: paused; }   /* 카드 위에 올리면 멈춤 */
+  .review-card { flex: 0 0 280px; width: 280px; }
+  .review-card.is-clone { display: flex; }               /* 복제 카드 노출 */
+}
+/* 한 세트(5장 × (280px 카드 + 20px 간격) = 1500px)만큼 이동 → 복제본과 이어져 무한 루프 */
+@keyframes review-marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-1500px); }
+}
+/* 모션 최소화 사용자: 흐름 끄고 태블릿 기본 그리드(3열, 5장)로 복귀 */
+@media (min-width: 769px) and (max-width: 1024px) and (prefers-reduced-motion: reduce) {
+  .review-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    width: auto;
+    animation: none;
+  }
+  .review-card { flex: initial; width: auto; }
+  .review-card.is-clone { display: none; }
 }
