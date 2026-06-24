@@ -510,7 +510,7 @@ button { font: inherit; border: 0; background: none; cursor: pointer; color: inh
    푸터 (common.js로 삽입됨)
    ========================================================================== */
 #footer { background: var(--color-bg-soft); border-top: 1px solid var(--color-line); }
-.footer-inner { padding: 64px 0 48px; display: flex; justify-content: space-between; gap: var(--gap); flex-wrap: wrap; }
+.footer-inner { padding: 64px var(--container-pad) 48px; display: flex; justify-content: space-between; gap: var(--gap); flex-wrap: wrap; }
 .footer-info .logo { margin-bottom: 20px; }
 .footer-info p { font-size: var(--fs-small); color: var(--color-text-sub); line-height: 1.8; }
 .footer-info .copy { margin-top: 18px; font-size: 13px; color: #98A1B2; }
